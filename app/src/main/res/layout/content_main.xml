@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainActivity"
+    tools:showIn="@layout/activity_main"
+    >
+
+    <Button
+        android:id="@+id/add_butt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/add_butt"
+        />
+
+    <EditText
+        android:id="@+id/added_item_et"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:minEms="8"
+        android:layout_alignParentStart="true"
+        android:layout_alignBaseline="@id/add_butt"
+        android:layout_toStartOf="@id/add_butt"
+        android:hint="@string/added_food_hint"
+        android:inputType="textPersonName"
+        />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/shopping_list_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:layout_below="@id/add_butt"
+        />
+
+</RelativeLayout>
