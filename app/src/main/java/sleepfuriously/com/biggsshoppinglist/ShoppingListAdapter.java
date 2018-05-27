@@ -71,9 +71,12 @@ public class ShoppingListAdapter
         int tmp = m_cursor.getInt(m_cursor.getColumnIndex(ShoppingListContract.COL_CHECKED)) ;
         boolean checked = (tmp == 1);
 
+        long id = m_cursor.getLong(m_cursor.getColumnIndex(ShoppingListContract._ID));
+
         // apply data to UI
         holder.checkBox.setText(str);
         holder.checkBox.setChecked(checked);
+        holder.itemView.setTag(id);     // Connect the db's id with the UI by saving it in the Tag.
     }
 
     @Override

@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -80,6 +81,25 @@ public class MainActivity extends AppCompatActivity {
         m_shoppingList_rv.setHasFixedSize(true);
         m_shoppingList_rv.setLayoutManager(new LinearLayoutManager(this));
         m_shoppingList_rv.setAdapter(m_shoppingListAdapter);
+
+        // Handle left and right swipes with this ItemTouchHelper
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback (
+                0,
+                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                // todo  Maybe allow user to re-arrange the list
+                return false;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+
+                removeItem((long) viewHolder.itemView.getTag());
+            }
+        }).attachToRecyclerView(m_shoppingList_rv);     // Connects the TouchHelper to our RV
+
 
         Button add_butt = findViewById(R.id.add_butt);
         add_butt.setOnClickListener(new View.OnClickListener() {
@@ -195,6 +215,15 @@ public class MainActivity extends AppCompatActivity {
         // add item to the data and notifiy the adapter
 //        m_shoppingList.add(item);
 //        m_shoppingListAdapter.notifyItemInserted(m_shoppingList.size() - 1);
+    }
+
+
+    private void removeItem (long id) {
+        m_db.delete (
+                DBContracts.ShoppingListContract.TABLE_NAME,
+                DBContracts.ShoppingListContract._ID + "=" + id,
+                null);
+        m_shoppingListAdapter.swapCursor(getAllItems());
     }
 
 
