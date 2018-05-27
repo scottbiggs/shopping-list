@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.graphics.Paint;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -104,6 +105,8 @@ public class ShoppingListAdapter
 
     class ShoppingListViewHolder extends RecyclerView.ViewHolder {
 
+        private final String TAG = ShoppingListViewHolder.class.getSimpleName();
+
         CheckBox checkBox;
 
         public ShoppingListViewHolder(View v) {
@@ -115,13 +118,22 @@ public class ShoppingListAdapter
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     int flags = buttonView.getPaintFlags();
+
+                    DisplayMetrics metrics = m_ctx.getResources().getDisplayMetrics();
+                    float density = metrics.density;
+                    float text_size = checkBox.getTextSize() / density;
+
                     if (isChecked) {
                         flags |= Paint.STRIKE_THRU_TEXT_FLAG;
+                        // reduce the text size by 4
+                        text_size -= 3;
                     }
                     else {
                         flags &= ~Paint.STRIKE_THRU_TEXT_FLAG;
+                        text_size += 3;
                     }
                     buttonView.setPaintFlags(flags);
+                    checkBox.setTextSize(text_size);
                 }
             });
         }
