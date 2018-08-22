@@ -117,6 +117,9 @@ public class ShoppingListAdapter
                 // To provide strike-thru support
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                    // todo  Provide DB support for these changes!
+
                     int flags = buttonView.getPaintFlags();
 
                     DisplayMetrics metrics = m_ctx.getResources().getDisplayMetrics();

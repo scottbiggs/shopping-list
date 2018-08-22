@@ -94,9 +94,12 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+            public void onSwiped(RecyclerView.ViewHolder vh, int direction) {
 
-                removeItem((long) viewHolder.itemView.getTag());
+                int pos = vh.getAdapterPosition();
+                long id = (long) vh.itemView.getTag();
+
+                removeItem(pos, id);
             }
         }).attachToRecyclerView(m_shoppingList_rv);     // Connects the TouchHelper to our RV
 
@@ -210,6 +213,7 @@ public class MainActivity extends AppCompatActivity {
         cv.put(DBContracts.ShoppingListContract.COL_CHECKED, item.checked);
 
         m_db.insert(DBContracts.ShoppingListContract.TABLE_NAME, null, cv);
+
         m_shoppingListAdapter.swapCursor(getAllItems());    // todo: not that efficient!
 
         // add item to the data and notifiy the adapter
@@ -218,12 +222,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void removeItem (long id) {
+    /**
+     * Removes the item at the given position of the recyclerview's ADAPTER
+     * (not the visible part--the whole schbang) from both the recyclerview
+     * and the data (Cursor).
+     *
+     * @param pos   The position within the Adapter
+     * @param id    The DB id of the item to remove.
+     */
+    private void removeItem (int pos, long id) {
+
+        Log.d (TAG, "removeItem(" + pos + ", " + id + ") called");
         m_db.delete (
                 DBContracts.ShoppingListContract.TABLE_NAME,
                 DBContracts.ShoppingListContract._ID + "=" + id,
                 null);
-        m_shoppingListAdapter.swapCursor(getAllItems());
+//        m_shoppingListAdapter.swapCursor(getAllItems());
+        m_shoppingListAdapter.notifyItemRemoved(pos);
+        m_shoppingList_rv.removeViewAt(pos);
+
+        Log.d(TAG, "removeItem, now " + m_shoppingList_rv.getChildCount() + " items");
     }
 
 
