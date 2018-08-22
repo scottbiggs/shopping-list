@@ -206,11 +206,11 @@ public class MainActivity extends AppCompatActivity {
 
         // by default, new shopping items are already checked as false
         ShoppingItem item = new ShoppingItem();
-        item.item_str = str;
+        item.setName(str);
 
         ContentValues cv = new ContentValues();
-        cv.put(DBContracts.ShoppingListContract.COL_DATA, item.item_str);
-        cv.put(DBContracts.ShoppingListContract.COL_CHECKED, item.checked);
+        cv.put(DBContracts.ShoppingListContract.COL_DATA, item.getName());
+        cv.put(DBContracts.ShoppingListContract.COL_CHECKED, item.isChecked());
 
         m_db.insert(DBContracts.ShoppingListContract.TABLE_NAME, null, cv);
 

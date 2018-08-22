@@ -1,18 +1,18 @@
 <resources>
-    <string name="app_name">biggs\' shopping list</string>
+    <name name="app_name">biggs\' shopping list</name>
 
     <!-- Main menu (action bar) -->
-    <string name="action_settings">settings</string>
-    <string name="action_removed_checked">remove checked items</string>
-    <string name="action_remove_all">remove everything</string>
-    <string name="action_order">order</string>
-    <string name="action_order_alphabetical">alphabetical</string>
-    <string name="action_order_checked">checked</string>
-    <string name="action_order_unchecked">unchecked</string>
-    <string name="action_order_most_recent">most recent first</string>
-    <string name="action_order_oldest">oldest first</string>
+    <name name="action_settings">settings</name>
+    <name name="action_removed_checked">remove checked items</name>
+    <name name="action_remove_all">remove everything</name>
+    <name name="action_order">order</name>
+    <name name="action_order_alphabetical">alphabetical</name>
+    <name name="action_order_checked">checked</name>
+    <name name="action_order_unchecked">unchecked</name>
+    <name name="action_order_most_recent">most recent first</name>
+    <name name="action_order_oldest">oldest first</name>
 
-    <string name="added_food_hint">add to your shopping list</string>
-    <string name="add_butt">add</string>
+    <name name="added_food_hint">add to your shopping list</name>
+    <name name="add_butt">add</name>
 
 </resources>

@@ -5,8 +5,34 @@ package sleepfuriously.com.biggsshoppinglist;
  */
 public class ShoppingItem {
 
-    public String item_str;
+    private int id;
+    private String name;
+    private boolean checked = false;
 
-    public boolean checked = false;
+    //-------------------------------
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
+    }
 
 }

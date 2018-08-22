@@ -7,29 +7,29 @@
     tools:context="sleepfuriously.com.biggsshoppinglist.MainActivity">
 
     <item android:id="@+id/order"
-        android:title="@string/action_order">
+        android:title="@name/action_order">
         <menu>
             <item android:id="@+id/order_unchecked"
-                android:title="@string/action_order_unchecked" />
+                android:title="@name/action_order_unchecked" />
             <item android:id="@+id/order_checked"
-                android:title="@string/action_order_checked" />
+                android:title="@name/action_order_checked" />
             <item android:id="@+id/order_alphabetical"
-                android:title="@string/action_order_alphabetical" />
+                android:title="@name/action_order_alphabetical" />
             <item android:id="@+id/order_oldest"
-                android:title="@string/action_order_oldest" />
+                android:title="@name/action_order_oldest" />
             <item android:id="@+id/order_newest"
-                android:title="@string/action_order_most_recent" />
+                android:title="@name/action_order_most_recent" />
         </menu>
     </item>
 
     <item android:id="@+id/remove_checked"
-        android:title="@string/action_removed_checked" />
+        android:title="@name/action_removed_checked" />
     <item android:id="@+id/remove_all"
-        android:title="@string/action_remove_all" />
+        android:title="@name/action_remove_all" />
 
     <item
         android:id="@+id/action_settings"
-        android:title="@string/action_settings"
+        android:title="@name/action_settings"
         app:showAsAction="never" />
 
 </menu>

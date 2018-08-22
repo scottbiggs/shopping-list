@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    app:layout_behavior="@name/appbar_scrolling_view_behavior"
     tools:context=".MainActivity"
     tools:showIn="@layout/activity_main"
     >
@@ -17,7 +17,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="@string/add_butt"
+        android:text="@name/add_butt"
         />
 
     <EditText
@@ -30,7 +30,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignBaseline="@id/add_butt"
         android:layout_toStartOf="@id/add_butt"
-        android:hint="@string/added_food_hint"
+        android:hint="@name/added_food_hint"
         android:inputType="textPersonName"
         />
 
